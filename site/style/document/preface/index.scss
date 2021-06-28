@@ -1,0 +1,26 @@
+.preface {
+    min-height: 88vh;
+    header {
+        padding: 50px;
+        text-align: center;
+    }
+    &-logo {
+        width: 200px;
+        margin: 100px;
+        // height: 400px;
+    }
+    &-btn {
+        width: 200px;
+        margin: 20px;
+        cursor: pointer;
+    }
+    &-introduce {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-star {
+        margin-left: 10px;
+        vertical-align: bottom;
+    }
+}

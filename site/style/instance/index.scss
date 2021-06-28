@@ -1,0 +1,14 @@
+.instance {
+    // min-height: 100vh;
+    height: 100%;
+    &-nav {
+        width: 100%;
+        padding: 10px;
+        line-height: 2;
+        box-sizing: border-box;
+        &-link {
+            font-weight: bold;
+            color: $siteRed;
+        }
+    }
+}

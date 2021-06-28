@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "target": "es6",
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": false,
+        "lib": ["es6", "dom"],
+        "keyofStringsOnly": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "declarationDir": "./compiled/es",
+        "skipLibCheck": true
+    },
+    "include": ["src"],
+    // "exclude": ["node_modules", "lib", "es"]
+    "exclude": ["node_modules","**/demo", "**/__tests__", "node_modules/*/**", "src/scss.tsx"]
+}
