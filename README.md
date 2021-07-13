@@ -71,7 +71,3 @@ Project
 
 -   [测试覆盖率 80% 以上](https://codecov.io/gh/jdthfe/eui/)
 
-## 0.0.3
-
--   新增了 Input 校验的触发方式
--   Radio 更新
