@@ -19,9 +19,9 @@ const cptDir: CptDir = {
 
 async function userInput() {
     const cpList: string[] = [];
-    componentIndex.map(item => cpList.push(item.name));
+    componentIndex.map((item) => cpList.push(item.name));
 
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         inquirer
             .prompt([
                 {
@@ -37,7 +37,7 @@ async function userInput() {
                     default: false,
                 },
             ])
-            .then(obj => {
+            .then((obj) => {
                 const { name, confirm } = obj as Cpt;
                 if (confirm) {
                     console.log(`...${name}'s Api Generating`);
@@ -54,11 +54,14 @@ async function userInput() {
 }
 
 function readCptFile() {
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         try {
             const { name } = cpt;
             const cpUrl = ['src', name];
-            cptDir['index.tsx'] = fs.readFileSync(getProjectUrl(...cpUrl, 'index.tsx'), 'utf8');
+            cptDir['index.tsx'] = fs.readFileSync(
+                getProjectUrl(...cpUrl, 'index.tsx'),
+                'utf8',
+            );
             cptDir['PropsType.tsx'] = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'PropsType.tsx'), 'utf8')
                 .replace(/NAME/g, name);
@@ -95,9 +98,13 @@ function mapPropsToTable(propStr: string, indexStr: string) {
     const table: PorpItem[] = [];
     const exp = propStr.match(expReg) || [];
     const defaultSec = (indexStr.match(defaultSecReg) || [])[0];
-    const tableMd = [`|Properties|Descrition|Type|Default|Required|`, `| - | - | - | - | - |`];
+    const tableMd = [
+        `|Properties|Descrition|Type|Default|Required|`,
+        `| - | - | - | - | - |`,
+    ];
     (propStr.match(Propsreg) || []).map((item, index) => {
-        const [, r1 = 'find key fail', r2 = false, , r4 = 'find type fail'] = item.match(valReg) || [];
+        const [, r1 = 'find key fail', r2 = false, , r4 = 'find type fail'] =
+            item.match(valReg) || [];
         const defaultReg = new RegExp(`(${r1}) = (.+?)(,| })`);
         const tableItem: PorpItem = {
             key: r1,
@@ -108,9 +115,9 @@ function mapPropsToTable(propStr: string, indexStr: string) {
         };
         table.push(tableItem);
         tableMd.push(
-            `|${tableItem.key}|${tableItem.exp}|\`${tableItem.type}\`|${getDefaultVal(tableItem.default)}|\`${
-                tableItem.needed
-            }\`|`,
+            `|${tableItem.key}|${tableItem.exp}|\`${
+                tableItem.type
+            }\`|${getDefaultVal(tableItem.default)}|\`${tableItem.needed}\`|`,
         );
     });
     const readmeUrl = getProjectUrl('src', cpt.name, 'demo', 'readme.md');

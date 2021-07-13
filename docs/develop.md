@@ -4,7 +4,7 @@
 
 ## 1. Prepare
 
-下载源代码 [`https://github.com/jdthfe/eui/tree/master`](https://github.com/jdthfe/eui/tree/master)
+下载源代码 [`http://coding.jd.com/thfe/ivory/`](http://coding.jd.com/thfe/ivory/)
 
 安装依赖
 
@@ -69,9 +69,7 @@ yarn new
 `src/Learn/index.tsx` 
 
 ```tsx
-import React from 'react';
 // 辅助 className 拼接 https://github.com/JedWatson/classnames#readme
-import classnames from 'classnames';
 import { LearnProps } from './PropsType';
 // 组件通用前缀
 import { prefix } from '../_util/';
@@ -90,18 +88,13 @@ const Learn = (props: LearnProps) => {
     //  如果某属性为选填，请赋初始值。必填属性不赋值
     //  api 脚本会读取此处的初始值在 readme 中生成表格
     const { prop = 'default', className, children, ...restProps } = props;
-    const cls = classnames(prefixCls, className);
-    return (
-        <div {...restProps} className={cls}>
-            {prop} | {children}
-        </div>
-    );
+    return '';
 };
 
 export default Learn;
 ```
 
-有关函数组件的格式和写法，请参考 `MessageBox`、`Toast` 组件
+有关函数组件的格式和写法，请参考 `GetQuery`、`FormatePrice` 组件
 
 ---
 
@@ -111,16 +104,13 @@ export default Learn;
 //  组件需要继承 return 的最外层元素的属性
 //  在 index.tsx 文件中，可以通过鼠标悬停在对应元素上，来查看属性全称
 //  默认是 div 的属性
-export interface LearnProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface LearnProps  {
     // 属性的描述必须用 /** contentn */ 注释，并且使用英文
     /** description */
     prop?: string;
 }
 ```
 
-有关函数组件属性的格式和写法，请参考 `MessageBox`、`Toast` 组件
-
-有关封装用组件属性的格式和写法，请参考 `TouchFeedback`、`Cover` 组件
 
 ---
 

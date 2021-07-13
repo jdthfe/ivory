@@ -61,7 +61,7 @@ function convertTstoDts() {
     return new Promise((res, rej) => {
         tsc.on('exit', code => {
             if (!code) {
-                res();
+                res(code);
             } else {
                 console.log(code);
                 rej(code);

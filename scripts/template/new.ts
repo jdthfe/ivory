@@ -43,7 +43,10 @@ async function userInput() {
     const typeObject: {
         [key: string]: boolean;
     } = {};
-    componentIndex.map((item: { name: string; type: string }) => (typeObject[item.type] = true));
+    componentIndex.map(
+        (item: { name: string; type: string }) =>
+            (typeObject[item.type] = true),
+    );
     // cnt: Create a new type
     const cnt = 'Create a new type';
     const typeList = [...Object.keys(typeObject), cnt];
@@ -64,7 +67,7 @@ async function userInput() {
             },
 
             {
-                when: answers => {
+                when: (answers) => {
                     const { type } = answers as Cpt;
                     return type === cnt;
                 },
@@ -74,7 +77,7 @@ async function userInput() {
                 default: 'NewType',
             },
         ])
-        .then(obj => {
+        .then((obj) => {
             let { name, type } = obj as Cpt;
             if (fs.existsSync(getProjectUrl('src', name))) {
                 colorLog(
@@ -90,7 +93,7 @@ async function userInput() {
 }
 
 function readTemplate() {
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         try {
             const { name } = cpt;
 
@@ -107,7 +110,10 @@ function readTemplate() {
             cptDir['style_index.scss'] = fs
                 .readFileSync(getProjectUrl(...styleUrl, 'index.scss'), 'utf8')
                 .replace(/NAME/g, name.toLowerCase());
-            cptDir['style_index.tsx'] = fs.readFileSync(getProjectUrl(...styleUrl, 'index.tsx'), 'utf8');
+            cptDir['style_index.tsx'] = fs.readFileSync(
+                getProjectUrl(...styleUrl, 'index.tsx'),
+                'utf8',
+            );
 
             const demoUrl = ['scripts', 'template', 'NAME', 'demo'];
             cptDir['demo_index.tsx'] = fs
@@ -118,15 +124,24 @@ function readTemplate() {
                 .replace(/NAME/g, name);
             // !tag new language
             cptDir['demo_readme.zh-CN.md'] = fs
-                .readFileSync(getProjectUrl(...demoUrl, 'readme.zh-CN.md'), 'utf8')
+                .readFileSync(
+                    getProjectUrl(...demoUrl, 'readme.zh-CN.md'),
+                    'utf8',
+                )
                 .replace(/NAME/g, name);
 
             const testsUrl = ['scripts', 'template', 'NAME', '__tests__'];
             cptDir['tests_demo.text.tsx'] = fs
-                .readFileSync(getProjectUrl(...testsUrl, 'demo.test.tsx'), 'utf8')
+                .readFileSync(
+                    getProjectUrl(...testsUrl, 'demo.test.tsx'),
+                    'utf8',
+                )
                 .replace(/NAME/g, name);
             cptDir['tests_index.text.tsx'] = fs
-                .readFileSync(getProjectUrl(...testsUrl, 'index.test.tsx'), 'utf8')
+                .readFileSync(
+                    getProjectUrl(...testsUrl, 'index.test.tsx'),
+                    'utf8',
+                )
                 .replace(/NAME/g, name);
             res();
         } catch (err) {
@@ -136,31 +151,67 @@ function readTemplate() {
 }
 
 function writeTemplate() {
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         try {
             const { name } = cpt;
 
             const nameUrl = ['src', name];
             fs.mkdirSync(getProjectUrl(...nameUrl));
-            fs.writeFileSync(getProjectUrl(...nameUrl, 'index.tsx'), cptDir['index.tsx'], 'utf8');
-            fs.writeFileSync(getProjectUrl(...nameUrl, 'PropsType.tsx'), cptDir['PropType.tsx'], 'utf8');
+            fs.writeFileSync(
+                getProjectUrl(...nameUrl, 'index.tsx'),
+                cptDir['index.tsx'],
+                'utf8',
+            );
+            fs.writeFileSync(
+                getProjectUrl(...nameUrl, 'PropsType.tsx'),
+                cptDir['PropType.tsx'],
+                'utf8',
+            );
 
             const styleUrl = [...nameUrl, 'style'];
             fs.mkdirSync(getProjectUrl(...styleUrl));
-            fs.writeFileSync(getProjectUrl(...styleUrl, 'index.scss'), cptDir['style_index.scss'], 'utf8');
-            fs.writeFileSync(getProjectUrl(...styleUrl, 'index.tsx'), cptDir['style_index.tsx'], 'utf8');
+            fs.writeFileSync(
+                getProjectUrl(...styleUrl, 'index.scss'),
+                cptDir['style_index.scss'],
+                'utf8',
+            );
+            fs.writeFileSync(
+                getProjectUrl(...styleUrl, 'index.tsx'),
+                cptDir['style_index.tsx'],
+                'utf8',
+            );
 
             const demoUrl = [...nameUrl, 'demo'];
             fs.mkdirSync(getProjectUrl(...demoUrl));
-            fs.writeFileSync(getProjectUrl(...demoUrl, 'index.tsx'), cptDir['demo_index.tsx'], 'utf8');
-            fs.writeFileSync(getProjectUrl(...demoUrl, 'readme.md'), cptDir['demo_readme.md'], 'utf8');
+            fs.writeFileSync(
+                getProjectUrl(...demoUrl, 'index.tsx'),
+                cptDir['demo_index.tsx'],
+                'utf8',
+            );
+            fs.writeFileSync(
+                getProjectUrl(...demoUrl, 'readme.md'),
+                cptDir['demo_readme.md'],
+                'utf8',
+            );
             // !tag new language
-            fs.writeFileSync(getProjectUrl(...demoUrl, 'readme.zh-CN.md'), cptDir['demo_readme.zh-CN.md'], 'utf8');
+            fs.writeFileSync(
+                getProjectUrl(...demoUrl, 'readme.zh-CN.md'),
+                cptDir['demo_readme.zh-CN.md'],
+                'utf8',
+            );
 
             const testsUrl = [...nameUrl, '__tests__'];
             fs.mkdirSync(getProjectUrl(...testsUrl));
-            fs.writeFileSync(getProjectUrl(...testsUrl, 'demo.test.tsx'), cptDir['tests_demo.text.tsx'], 'utf8');
-            fs.writeFileSync(getProjectUrl(...testsUrl, 'index.test.tsx'), cptDir['tests_index.text.tsx'], 'utf8');
+            fs.writeFileSync(
+                getProjectUrl(...testsUrl, 'demo.test.tsx'),
+                cptDir['tests_demo.text.tsx'],
+                'utf8',
+            );
+            fs.writeFileSync(
+                getProjectUrl(...testsUrl, 'index.test.tsx'),
+                cptDir['tests_index.text.tsx'],
+                'utf8',
+            );
 
             res();
         } catch (err) {
@@ -171,13 +222,16 @@ function writeTemplate() {
 }
 
 function addCptInSpecifiedFile() {
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         try {
             const { name, type } = cpt;
 
             const indexUrl = getProjectUrl('src', 'index.tsx');
             const components = fs.readFileSync(indexUrl, 'utf8');
-            const newIndex = components + `export { default as ${name} } from './${name}';` + EOL;
+            const newIndex =
+                components +
+                `export { default as ${name} } from './${name}';` +
+                EOL;
             fs.writeFileSync(indexUrl, newIndex, 'utf8');
 
             const styleUrl = getProjectUrl('src', 'scss.tsx');
@@ -185,10 +239,18 @@ function addCptInSpecifiedFile() {
             const newStyle = componentStyle + `import './${name}/style';` + EOL;
             fs.writeFileSync(styleUrl, newStyle, 'utf8');
 
-            const typeListUrl = getProjectUrl('site', '_util', 'componentIndex.tsx');
+            const typeListUrl = getProjectUrl(
+                'site',
+                '_util',
+                'componentIndex.tsx',
+            );
             // !tag new language
             componentIndex.push({ name, type, 'zh-CN': '待输入_中文名' });
-            fs.writeFileSync(typeListUrl, `export default ${JSON.stringify(componentIndex)}`, 'utf8');
+            fs.writeFileSync(
+                typeListUrl,
+                `export default ${JSON.stringify(componentIndex)}`,
+                'utf8',
+            );
             res();
         } catch (err) {
             colorLog('AddCptInTemplate Failed !', 'red');

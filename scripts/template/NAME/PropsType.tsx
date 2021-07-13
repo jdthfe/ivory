@@ -1,4 +1,4 @@
-export interface NAMEProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface NAMEProps {
     /** description */
     prop?: string;
 }

@@ -12,7 +12,7 @@ interface Cpt {
 
 function userInput() {
     const cpList: string[] = [];
-    componentIndex.map(item => cpList.push(item.name));
+    componentIndex.map((item) => cpList.push(item.name));
     return inquirer
         .prompt([
             {
@@ -28,7 +28,7 @@ function userInput() {
                 default: false,
             },
         ])
-        .then(obj => {
+        .then((obj) => {
             const { name, confirm } = obj as Cpt;
             if (confirm) {
                 colorLog(`...${name} Removing`, 'yellow');
@@ -41,7 +41,7 @@ function userInput() {
 
 function deleteFolderRecursive(path: string) {
     if (fs.existsSync(path)) {
-        fs.readdirSync(path).forEach(function(file) {
+        fs.readdirSync(path).forEach(function (file) {
             var curPath = path + '/' + file;
             if (fs.statSync(curPath).isDirectory()) {
                 deleteFolderRecursive(curPath);
@@ -54,7 +54,7 @@ function deleteFolderRecursive(path: string) {
 }
 
 function deleteFile() {
-    return new Promise((res, rej) => {
+    return new Promise<void>((res, rej) => {
         try {
             const { name } = cpt;
             const NameUrl = ['src', name];
@@ -69,7 +69,7 @@ function deleteFile() {
 function deleteCode(reg: string, content: string): string {
     return content
         .split(EOL)
-        .filter(item => !item.includes(reg))
+        .filter((item) => !item.includes(reg))
         .join(EOL);
 }
 
@@ -89,7 +89,9 @@ function removeCptCodeInSpecifiedFile() {
     const typeListUrl = getProjectUrl('site', '_util', 'componentIndex.tsx');
     fs.writeFileSync(
         typeListUrl,
-        `export default ${JSON.stringify(componentIndex.filter(item => item.name !== name))}`,
+        `export default ${JSON.stringify(
+            componentIndex.filter((item) => item.name !== name),
+        )}`,
         'utf8',
     );
 }
