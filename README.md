@@ -69,5 +69,5 @@ Project
 
 -  提供各种基础方法
 
--   [测试覆盖率 80% 以上](https://codecov.io/gh/jdthfe/eui/)
+-  测试覆盖率 80% 以上
 
