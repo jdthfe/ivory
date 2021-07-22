@@ -1,0 +1,6 @@
+@import '../../style/mixin';
+$getappuuid-prefix: $preifx + '-getappuuid';
+
+.#{$getappuuid-prefix} {
+    text-decoration: underline;
+}

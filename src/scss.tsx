@@ -6,3 +6,4 @@ import './GetQuery/style';
 import './DeepObjectMerge/style';
 import './FormatePrice/style';
 import './Throttle/style';
+import './GetAppUuid/style';
