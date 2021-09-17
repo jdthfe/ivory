@@ -7,3 +7,4 @@ import './DeepObjectMerge/style';
 import './FormatePrice/style';
 import './Throttle/style';
 import './GetAppUuid/style';
+import './PingAsync/style';

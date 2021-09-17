@@ -14,10 +14,12 @@ interface Cpt {
     name: string;
     type: string;
 }
+
+//  把样式都注释掉，方法工具包不需要任何的样式
 interface CptDir {
     'index.tsx': string;
     'PropType.tsx': string;
-    'style_index.scss': string;
+    // 'style_index.scss': string;
     'style_index.tsx': string;
     'demo_index.tsx': string;
     'demo_readme.md': string;
@@ -29,7 +31,7 @@ interface CptDir {
 const cptDir: CptDir = {
     'index.tsx': '',
     'PropType.tsx': '',
-    'style_index.scss': '',
+    // 'style_index.scss': '',
     'style_index.tsx': '',
     'demo_index.tsx': '',
     'demo_readme.md': '',
@@ -106,14 +108,14 @@ function readTemplate() {
                 .readFileSync(getProjectUrl(...cpUrl, 'PropsType.tsx'), 'utf8')
                 .replace(/NAME/g, name);
 
-            const styleUrl = ['scripts', 'template', 'NAME', 'style'];
-            cptDir['style_index.scss'] = fs
-                .readFileSync(getProjectUrl(...styleUrl, 'index.scss'), 'utf8')
-                .replace(/NAME/g, name.toLowerCase());
-            cptDir['style_index.tsx'] = fs.readFileSync(
-                getProjectUrl(...styleUrl, 'index.tsx'),
-                'utf8',
-            );
+            // const styleUrl = ['scripts', 'template', 'NAME', 'style'];
+            // cptDir['style_index.scss'] = fs
+            //     .readFileSync(getProjectUrl(...styleUrl, 'index.scss'), 'utf8')
+            //     .replace(/NAME/g, name.toLowerCase());
+            // cptDir['style_index.tsx'] = fs.readFileSync(
+            //     getProjectUrl(...styleUrl, 'index.tsx'),
+            //     'utf8',
+            // );
 
             const demoUrl = ['scripts', 'template', 'NAME', 'demo'];
             cptDir['demo_index.tsx'] = fs
@@ -168,18 +170,18 @@ function writeTemplate() {
                 'utf8',
             );
 
-            const styleUrl = [...nameUrl, 'style'];
-            fs.mkdirSync(getProjectUrl(...styleUrl));
-            fs.writeFileSync(
-                getProjectUrl(...styleUrl, 'index.scss'),
-                cptDir['style_index.scss'],
-                'utf8',
-            );
-            fs.writeFileSync(
-                getProjectUrl(...styleUrl, 'index.tsx'),
-                cptDir['style_index.tsx'],
-                'utf8',
-            );
+            // const styleUrl = [...nameUrl, 'style'];
+            // fs.mkdirSync(getProjectUrl(...styleUrl));
+            // fs.writeFileSync(
+            //     getProjectUrl(...styleUrl, 'index.scss'),
+            //     cptDir['style_index.scss'],
+            //     'utf8',
+            // );
+            // fs.writeFileSync(
+            //     getProjectUrl(...styleUrl, 'index.tsx'),
+            //     cptDir['style_index.tsx'],
+            //     'utf8',
+            // );
 
             const demoUrl = [...nameUrl, 'demo'];
             fs.mkdirSync(getProjectUrl(...demoUrl));
@@ -234,10 +236,10 @@ function addCptInSpecifiedFile() {
                 EOL;
             fs.writeFileSync(indexUrl, newIndex, 'utf8');
 
-            const styleUrl = getProjectUrl('src', 'scss.tsx');
-            const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-            const newStyle = componentStyle + `import './${name}/style';` + EOL;
-            fs.writeFileSync(styleUrl, newStyle, 'utf8');
+            // const styleUrl = getProjectUrl('src', 'scss.tsx');
+            // const componentStyle = fs.readFileSync(styleUrl, 'utf8');
+            // const newStyle = componentStyle + `import './${name}/style';` + EOL;
+            // fs.writeFileSync(styleUrl, newStyle, 'utf8');
 
             const typeListUrl = getProjectUrl(
                 'site',
