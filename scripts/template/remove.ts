@@ -81,10 +81,10 @@ function removeCptCodeInSpecifiedFile() {
     const newIndex = deleteCode(`'./${name}'`, components);
     fs.writeFileSync(indexUrl, newIndex, 'utf8');
 
-    const styleUrl = getProjectUrl('src', 'scss.tsx');
-    const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-    const newStyle = deleteCode(`'./${name}/style'`, componentStyle);
-    fs.writeFileSync(styleUrl, newStyle, 'utf8');
+    // const styleUrl = getProjectUrl('src', 'scss.tsx');
+    // const componentStyle = fs.readFileSync(styleUrl, 'utf8');
+    // const newStyle = deleteCode(`'./${name}/style'`, componentStyle);
+    // fs.writeFileSync(styleUrl, newStyle, 'utf8');
 
     const typeListUrl = getProjectUrl('site', '_util', 'componentIndex.tsx');
     fs.writeFileSync(

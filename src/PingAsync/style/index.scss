@@ -1,0 +1,6 @@
+@import '../../style/mixin';
+$pingasync-prefix: $preifx + '-pingasync';
+
+.#{$pingasync-prefix} {
+    text-decoration: underline;
+}

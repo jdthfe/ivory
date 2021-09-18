@@ -1,9 +1,21 @@
 import React from 'react';
 import { Throttle } from '@src/index';
+import { Button } from '@jdthfe/eui';
 const Demo = () => {
-    console.log(Throttle);
 
-    return <div className="Throttle">Throttle</div>;
+    const fun = () => {
+        console.log('Throttle');
+    }
+
+    return <div className="Throttle">
+
+        <Button theme="primary" onClick={
+            Throttle(fun, 1000)
+        }>
+            Throttle
+        </Button>
+
+    </div >;
 };
 
 export default Demo;
