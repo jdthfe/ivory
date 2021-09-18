@@ -47,7 +47,7 @@ function getRenderContent(str: string = '', k: number = 0): JSX.Element[] {
 const Article = (props: ContainerProps) => {
     const { item } = props,
         docs = getDocs(item),
-        { demoSource, infoSource = "" } = docs,
+        { infoSource = "" } = docs,
         lang = getLanguage(),
         readme = docs[`readme${lang !== 'en-US' ? '.' + lang : ''}`] || '';
     const str = `# ${item.name} ${lang !== 'en-US' ? item[lang] : ''

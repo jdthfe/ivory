@@ -1,6 +1,3 @@
-import { PingAsyncProps } from './PropsType';
-import { prefix } from '../_util/';
-const prefixCls = `${prefix}-pingasync`;
 export interface PingParams {
     event_id?: string;
     page_id?: string | number;

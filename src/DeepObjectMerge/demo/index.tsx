@@ -5,7 +5,6 @@ const Demo = () => {
     const messyObj1 = { o: { a: 3 } };
     const messyObj2 = { o: { b: 4 } };
 
-    const a = DeepObjectMerge({ o: { a: 3 } }, { o: { b: 4 } });
     const [obj, setObj] = useState();
     return <div className="DeepObjectMerge">
 

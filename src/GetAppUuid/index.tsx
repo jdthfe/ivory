@@ -2,6 +2,8 @@ import { GetAppUuidProps, GetAppUuidResult } from './PropsType';
 
 
 const GetAppUuid = (props?: GetAppUuidProps) => {
+    console.log(props);
+
     const promFun = new Promise<GetAppUuidResult>((resolve) => {
         try {
             // 如果是 ios版的 app

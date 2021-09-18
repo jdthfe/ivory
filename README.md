@@ -3,7 +3,11 @@
 [ ![Travis (.org)](https://img.shields.io/travis/jdthfe/eui.svg?style=for-the-badge)](https://travis-ci.com/jdthfe/eui) [ ![Codecov](https://img.shields.io/codecov/c/gh/jdthfe/eui.svg?style=for-the-badge)](https://codecov.io/gh/jdthfe/eui/) ![GitHub top language](https://img.shields.io/github/languages/top/jdthfe/eui.svg?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/jdthfe/eui.svg?style=for-the-badge)
 
 
+## 效果预览
 
+-   [文档](https://jdthfe.github.io/ivory/)
+
+<!-- -   [移动端实例](https://jdthfe.github.io/eui/#/instance) -->
 
 ## 快速开发
 

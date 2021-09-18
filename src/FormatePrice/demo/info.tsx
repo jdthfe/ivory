@@ -2,4 +2,4 @@ import { FormatePrice } from '@src/index';
 
 
 
-const price = FormatePrice('123456789');
+FormatePrice('123456789');
