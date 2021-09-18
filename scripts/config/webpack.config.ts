@@ -13,6 +13,7 @@ interface EnvMap {
     development: string;
     [key: string]: string;
 }
+<<<<<<< HEAD
 const devMode: boolean =
     (process.env.NODE_ENV as keyof EnvMap) === 'development';
 
@@ -23,6 +24,15 @@ const tsconfig = getProjectUrl(
 const config: webpack.Configuration = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', 'css'],
+=======
+const devMode: boolean = (process.env.NODE_ENV as keyof EnvMap) === 'development';
+
+const tsconfig = getProjectUrl(`tsconfig.${process.env.NODE_ENV === 'dist' ? 'dts.' : ''}json`);
+
+const config: webpack.Configuration = {
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+>>>>>>> 2a616ab627d3ce62ab87f2b880ddffcc6fc996c0
         alias: {
             '@src': getProjectUrl('src'),
             '@tests': getProjectUrl('scripts', 'tests'),
@@ -31,9 +41,13 @@ const config: webpack.Configuration = {
     // output: {
     //     publicPath: './dist',
     // },
+<<<<<<< HEAD
     devtool: devMode
         ? 'cheap-module-eval-source-map'
         : 'cheap-module-source-map',
+=======
+    devtool: devMode ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
+>>>>>>> 2a616ab627d3ce62ab87f2b880ddffcc6fc996c0
     module: {
         rules: [
             {
@@ -70,11 +84,14 @@ const config: webpack.Configuration = {
                 ],
             },
             {
+<<<<<<< HEAD
                 test: /\.css$/,
                 include: /(node_modules)/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
+=======
+>>>>>>> 2a616ab627d3ce62ab87f2b880ddffcc6fc996c0
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader',
             },
@@ -90,7 +107,11 @@ const config: webpack.Configuration = {
         new StyleLintPluginfrom({
             configFile: getProjectUrl('.stylelintrc.js'),
             context: getProjectUrl(),
+<<<<<<< HEAD
             files: ['src/**/*.scss'],
+=======
+            files: ['**/*.scss'],
+>>>>>>> 2a616ab627d3ce62ab87f2b880ddffcc6fc996c0
             failOnError: false,
             emitErrors: true,
             syntax: 'scss',
