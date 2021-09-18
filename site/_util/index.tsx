@@ -41,22 +41,22 @@ export const getDocs = (item: ComponentIndex) => {
     try {
         if (item.type === 'markdownOnly') {
             languages.map((lang) => {
-                const readmeLang = `readme${
-                        lang.code === 'en-US' ? '' : '.' + lang.code
+                const readmeLang = `readme${lang.code === 'en-US' ? '' : '.' + lang.code
                     }`,
-                    mdLang = `${item.name}${
-                        lang.code === 'en-US' ? '' : '.' + lang.code
-                    }`;
+                    mdLang = `${item.name}${lang.code === 'en-US' ? '' : '.' + lang.code
+                        }`;
                 docs[readmeLang] =
                     require(`!!raw-loader!../document/markdown/${mdLang}.md`).default;
             });
         } else {
             docs.demoSource =
                 require(`!!raw-loader!../../src/${item.name}/demo`).default;
+
+            docs.infoSource = require(`!!raw-loader!../../src/${item.name}/demo/info.tsx`).default;
+
             languages.map((lang) => {
-                const readmeLang = `readme${
-                    lang.code === 'en-US' ? '' : '.' + lang.code
-                }`;
+                const readmeLang = `readme${lang.code === 'en-US' ? '' : '.' + lang.code
+                    }`;
                 docs[readmeLang] =
                     require(`!!raw-loader!../../src/${item.name}/demo/${readmeLang}.md`).default;
             });

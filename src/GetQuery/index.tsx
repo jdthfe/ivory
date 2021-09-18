@@ -1,6 +1,8 @@
-const GetQuery = (name: string) => {
+const GetQuery = (name: string, url?: string) => {
+    console.log(url);
+
     let query: { [key: string]: string } = {},
-        search = window.location.search.slice(1).split('&'),
+        search = url ? url.split('?')[1].split('&') : window.location.search.slice(1).split('&'),
         i = search.length,
         p,
         j,

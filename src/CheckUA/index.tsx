@@ -1,5 +1,4 @@
 const CheckUA = {
-    ua: (window.navigator.userAgent || "").toLowerCase(),
 
     isIos: /iphone|ipd|ipod/.test((window.navigator.userAgent || "").toLowerCase()),
 

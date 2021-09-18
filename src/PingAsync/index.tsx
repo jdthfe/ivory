@@ -92,6 +92,7 @@ class PingAsync {
             _.queue.push(option);
         }
     }
+
     private loadJs() {
         let _ = this;
         (function (d, s, id) {

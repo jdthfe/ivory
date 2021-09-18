@@ -47,18 +47,17 @@ function getRenderContent(str: string = '', k: number = 0): JSX.Element[] {
 const Article = (props: ContainerProps) => {
     const { item } = props,
         docs = getDocs(item),
-        { demoSource } = docs,
+        { demoSource, infoSource = "" } = docs,
         lang = getLanguage(),
         readme = docs[`readme${lang !== 'en-US' ? '.' + lang : ''}`] || '';
-    const str = `# ${item.name} ${
-        lang !== 'en-US' ? item[lang] : ''
-    }\n${readme.replace(
-        '## Demo',
-        `## Demo\n\`\`\`jsx\n${demoSource}\n\`\`\``.replace(
-            '@src/index',
-            '@jdthfe/eui',
-        ),
-    )}`;
+    const str = `# ${item.name} ${lang !== 'en-US' ? item[lang] : ''
+        }\n${readme.replace(
+            '## Demo',
+            `## Demo\n\`\`\`jsx\n${infoSource}\n\`\`\``.replace(
+                '@src/index',
+                '@jdthfe/ivory',
+            ),
+        )}`;
     return (
         <article className="document-article">
             <div className="markdown-body">{getRenderContent(str)}</div>
